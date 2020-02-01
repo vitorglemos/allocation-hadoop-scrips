@@ -43,22 +43,22 @@ $HADOOP_PREFIX/share/hadoop/yarn/lib/*
 
 <property>
 <name>yarn.resourcemanager.hostname</name>
-<value>uff25</value>
+<value>master_node</value> <!-- insert your master node on cluster -->
 </property>
 
 <property>
 <name>yarn.resourcemanager.address</name>
-<value>uff25:8032</value>
+<value>master_node:8032</value> <!-- insert your master node on cluster -->
 </property>
 
 <property>
 <name>yarn.resourcemanager.resource-tracker.address</name>
-<value>uff25:8025</value>
+<value>master_node:8025</value> <!-- insert your master node on cluster -->
 </property>
 
 <property>
 <name>yarn.resourcemanager.scheduler.address</name>
-<value>uff25:8030</value>
+<value>master_node:8030</value> <!-- insert your master node on cluster -->
 </property>
 
 <property>
@@ -68,7 +68,7 @@ $HADOOP_PREFIX/share/hadoop/yarn/lib/*
 
 <property>
 <name>yarn.nodemanager.resource.cpu-vcores</name>
-<value>8</value>
+<value>8</value><!-- insert number of cpu vcores -->
 </property>
 
 <property>
