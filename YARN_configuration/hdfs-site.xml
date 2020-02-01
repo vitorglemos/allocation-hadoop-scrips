@@ -19,17 +19,17 @@
 <configuration>
 <property>
 <name>dfs.replication</name>
-<value>1</value>
+<value>1</value> <!-- number of replications -->
 </property>
 
 <property>
 <name>dfs.namenode.name.dir</name>
-<value>/var/usuarios/vlemos/hadop/hdfs/namenode</value> 
+<value>/var/user/hdfs/namenode</value> <!-- namenode directory -->
 </property>
 
 <property>
 <name>dfs.datanode.data.dir</name>
-<value>/var/usuarios/vlemos/hadop/hdfs/datanode</value> 
+<value>/var/user/hdfs/datanode</value> <!-- datanode directory -->
 </property>
 
 <property>
