@@ -1,2 +1,2 @@
 hdfs dfs -expunge
-rm -rf /var/usuarios/vlemos/hadop/logs/*
+rm -rf /var/user/logs/* ## Insert logs directory
