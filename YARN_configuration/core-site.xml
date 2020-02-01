@@ -19,11 +19,11 @@
 <configuration>
 <property>
 <name>hadoop.tmp.dir</name>
-<value>/var/usuarios/vlemos/hadop/tmp/hadoop</value>
+<value>/var/user/tmp/hadoop</value> <!-- temp directory -->
 </property>
 
 <property>
 <name>fs.defaultFS</name>
-<value>hdfs://uff25:9000</value>
+<value>hdfs://master_node:9000</value> <!-- Insert your master machine -->
 </property>
 </configuration>
