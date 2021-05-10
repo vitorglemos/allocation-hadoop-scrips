@@ -1,28 +1,31 @@
 import os
 
-machines = ["22","32","34","37","39"]; ## array with all machines on cluster
+machine_names = ["m22","m32","m34","m37","m39"];
 
-def machines_tmp_delete():
-    for i in range(0,len(machines)):
-        ssh = "ssh my_user_ssh@" + machines[i]; # your ssh user
-        delete = " 'rm -r /tmp/* -f >/dev/null 2>&1'"; # temp files
-        command = ssh + delete;
-        out = os.system(command);
-        print(" Machine uff" + machines[i] + " /tmp deleted ! Success !")
+async def machine_delete_tmp(user: str):
+    tmp_clean = "'rm -r /tmp/* -f >/dev/null 2>&1'"
+    for m_name in machine_names:
+        ssh_conn = f"ssh {user}@{m_name}"
+        ssh_conn_clean = f"{ssh_conn} {tmp_clean}"
+        os.system(ssh_conn_clean)
         
-def machines_datanode_format():
-    for i in range(0,len(machines)):
-        ssh = "ssh my_user_ssh@" + machines[i];
-        directory = r" 'cd /var/user'"; # your directory
-        delete = " 'rm -r hdfs/'";
-        make = " 'mkdir -p hdfs/datanode'"; # clean datanodes
-        chmod = " 'chmod 775 hdfs/datanode'";
-        os.system(ssh + directory);
-        os.system(ssh + delete);
-        os.system(ssh + make);
-        os.system(ssh + chmod);
-        print(" Machine uff" + machines[i] + " HDFS Datanode formated ! Success !")
+        print(f"Machine {m_name} cleaned!")
+   
+async def machine_delete_datanode(user: str):
+    hadoop_directory = r" 'cd /var/user'"
+    hadoop_hdfs = " 'rm -r hdfs/'"
+    make_hdfs = " 'mkdir -p hdfs/datanode'"
+    chmod_hdfs = " 'chmod 775 hdfs/datanode'"
+    
+    for m_name in machine_names:
+        ssh_conn = f"ssh {user}@{m_name}"
+        os.system(f"{ssh){hadoop_directory}")
+        os.system(f"{ssh){hadoop_hdfs}")
+        os.system(f"{ssh}{make_hdfs}")
+        os.system(f"{ssh}{chmod_hdfs}")
+                     
+def run():
+  await machine_delete_tmp(user="user")
+  await machine_delete_datanode(user="user")
+                  
       
-
-machines_tmp_delete(); #this code clean /temp
-machines_datanode_format(); #this code format datanode directory 
